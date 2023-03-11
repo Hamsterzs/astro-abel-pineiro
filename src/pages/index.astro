@@ -1,15 +1,171 @@
 ---
+const TITLE = "Abel Pineiro";
+const DESCRIPTION =
+  "Welcome to my personal website, Navigate to some of my interests by selecting a planet.";
+import { Image } from "@astrojs/image/components";
+import Me from "../images/me.jpg";
+import OrbitingOuterPlanet from "../components/OrbitingOuterPlanet.astro";
+import OrbitingInnerPlanet from "../components/OrbitingInnerPlanet.astro";
+import PlanetSlider from "../components/PlanetSlider.astro";
+import Jupiter from "../images/jupiter.png";
+import Neptune from "../images/neptune.png";
+import Venus from "../images/venus.png";
+import StarWarsPlanet from "../images/starwarsPlanet.png";
+import PurplePlanet from "../images/purplePlanet.png";
+import ColdPlanet from "../images/coldPlanet.png";
+
+import "@fontsource/abel";
+import "@fontsource/prompt";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Welcome to my personal website, Click through to learn about me."
+    />
+    <title>Abel Pineiro</title>
+  </head>
+  <body>
+    <div class="h-screen w-screen overflow-auto bg-gray-200 lg:overflow-hidden">
+      <div class="flex flex-col gap-4 px-2 py-10 lg:hidden tall:flex">
+        <div class="flex h-1/2 w-full flex-col items-center">
+          <div
+            class="container flex flex-col items-center gap-1 rounded-lg bg-white py-28 px-2 text-center shadow-2xl md:w-[35rem]"
+          >
+            <div
+              class="relative flex aspect-square w-[15%] min-w-[200px] items-center justify-center overflow-hidden rounded-full"
+            >
+              <Image src={Me} width={200} height={200} alt="abel pineiro" />
+            </div>
+            <h1 class="font-prompt text-4xl 4xl:text-5xl">{TITLE}</h1>
+            <p class="w-10/12 font-abel text-2xl 4xl:text-3xl">
+              {DESCRIPTION}
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="container mx-auto flex h-1/2 flex-col items-center md:w-[35rem]"
+        >
+          <div
+            class="flex w-full flex-col items-center gap-1 rounded-lg bg-white py-12 px-4 text-center shadow-2xl md:gap-2 md:px-8"
+          >
+            <PlanetSlider
+              title="Work"
+              planetImage={Jupiter}
+              animation="animate-back-and-forth-1"
+              links="/music"
+            />
+
+            <PlanetSlider
+              title="Music"
+              planetImage={Neptune}
+              animation="animate-back-and-forth-2"
+              links="/music"
+            />
+            <PlanetSlider
+              title="Movies & TV"
+              planetImage={ColdPlanet}
+              animation="animate-back-and-forth-3"
+              links="/music"
+            />
+            <PlanetSlider
+              title="Anime"
+              planetImage={Venus}
+              animation="animate-back-and-forth-4"
+              links="/music"
+            />
+            <PlanetSlider
+              title="Code"
+              planetImage={StarWarsPlanet}
+              animation="animate-back-and-forth-5"
+              links="/music"
+            />
+            <PlanetSlider
+              title="Games"
+              planetImage={PurplePlanet}
+              animation="animate-back-and-forth-6"
+              links="/music"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="relative hidden h-screen w-screen items-center justify-center overflow-hidden lg:flex tall:hidden"
+      >
+        <div class="flex w-full flex-col items-center">
+          <div
+            class="flex w-[35%] min-w-[500px] max-w-[550px] flex-col items-center gap-1 rounded-lg bg-white py-28 px-0 text-center shadow-2xl 4xl:max-w-[650px] 4xl:gap-4 4xl:py-48 4xl:px-2"
+          >
+            <div
+              class="relative flex aspect-square w-[15%] min-w-[200px] items-center justify-center overflow-hidden rounded-full"
+            >
+              <Image src={Me} width={250} height={250} alt="abel pineiro" />
+            </div>
+            <h1 class="font-prompt text-4xl 4xl:text-5xl">{TITLE}</h1>
+            <p class="w-3/4 font-abel text-2xl 4xl:text-3xl">
+              {DESCRIPTION}
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="absolute aspect-square h-[85%] animate-orbit-slow rounded-[100%] border-2 border-dashed border-slate-500 bg-transparent"
+        >
+          <div class="relative h-full w-full">
+            <div class="w"></div>
+            <OrbitingOuterPlanet
+              className="left-1/2 top-0 -translate-x-1/2 -translate-y-1/2"
+              title="Work"
+              image={Jupiter}
+            />
+
+            <a href="/music">
+              <OrbitingOuterPlanet
+                className="left-0 bottom-0 translate-x-full"
+                title="Music"
+                image={Neptune}
+              />
+            </a>
+
+            <OrbitingOuterPlanet
+              className="right-0 top-1/2 translate-x-1/2"
+              image={ColdPlanet}
+              title="Entertainment"
+            />
+          </div>
+        </div>
+
+        <div
+          class="absolute aspect-square h-[62%] animate-orbit rounded-[100%] border-2 border-dashed border-slate-500 bg-transparent"
+        >
+          <div class="relative h-full w-full">
+            <OrbitingInnerPlanet
+              image={Venus}
+              title="Anime"
+              className="bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+            />
+
+            <OrbitingInnerPlanet
+              image={StarWarsPlanet}
+              title="Code"
+              className="top-0 right-0 -translate-x-1/2"
+            />
+
+            <OrbitingInnerPlanet
+              image={PurplePlanet}
+              title="Games"
+              className="top-1/2 left-0 -translate-x-1/2"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

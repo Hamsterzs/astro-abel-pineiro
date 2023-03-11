@@ -1,0 +1,17 @@
+---
+const { className, title, image } = Astro.props;
+import { Image } from "@astrojs/image/components";
+---
+
+<div
+  class={`absolute flex aspect-square h-[15%] items-center justify-center rounded-full ${className}`}
+>
+  <div class="h-full w-full animate-orbit-slow-reverse">
+    <div
+      class="absolute top-full left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-lg bg-slate-700 py-1 px-4 text-2xl text-white"
+    >
+      {title}
+    </div>
+    <Image src={image} height={200} width={200} alt="planet" class="-z-10" />
+  </div>
+</div>

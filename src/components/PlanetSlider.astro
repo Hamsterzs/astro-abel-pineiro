@@ -1,0 +1,22 @@
+---
+const { links, title, planetImage, animation } = Astro.props;
+import { Image } from "@astrojs/image/components";
+---
+
+<a
+  href={links}
+  class="relative h-20 w-full max-w-sm rounded-full border-4 border-slate-500 shadow-md"
+>
+  <span
+    class="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 font-prompt text-4xl font-bold tracking-[2px] text-slate-500"
+  >
+    {title}
+  </span>
+  <Image
+    src={planetImage}
+    height={80}
+    width={80}
+    alt="planet"
+    class={`absolute top-1/2 left-0 -translate-y-1/2 translate-x-[10%] ${animation}`}
+  />
+</a>
